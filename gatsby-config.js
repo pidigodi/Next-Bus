@@ -10,7 +10,7 @@
 module.exports = {
   siteMetadata: {
     title: `Bus & Coach Charter Hire | NextBus`,
-    description: `Whether you need group transport for a corporate event, school trip, or day tour in Auckland? Simply post your trip details and we'll send you our best offer.`,
+    description: `Whether you need group transport for a corporate event, school trip, or day tour in New Zealand? Simply post your trip details and we'll send you the best offer.`,
     author: `@gatsbyjs`,
     siteUrl: `https://nextbus.co.nz/`,
   },

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button, Modal, Form, Row, Col } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../components/layout"
 
 export default function NextBusLanding() {

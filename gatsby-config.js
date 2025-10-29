@@ -9,10 +9,10 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Compare & Book with NextBus`,
-    description: `Find reliable charter bus hire in New Zealand. Post your trip once and get quotes from trusted operators for events, tours, schools, and more.`,
+    title: `Bus & Coach Charter Hire | NextBus`,
+    description: `Whether you need group transport for a corporate event, school trip, or day tour in Auckland? Simply post your trip details and we'll send you our best offer.`,
     author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://nextbus.co.nz/`,
   },
   plugins: [
     `gatsby-plugin-image`,

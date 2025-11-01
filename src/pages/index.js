@@ -42,7 +42,7 @@ export default function NextBusLanding() {
         >
           Next Bus Charters
         </h1>
-        <p className="text-muted mb-4 fs-5 text-start">Looking for reliable group transport in South or East Auckland? Whether it’s a corporate event, school trip, day tour, wedding, or major sporting event, Next Bus makes travel easy, comfortable, and stress-free. Sit back, relax, and let us handle the journey — your group transport solution starts with Next Bus.</p>
+        <p className="text-muted mb-4 fs-5 text-start">Looking for reliable group transport in South or East Auckland? Whether it’s a corporate event, school trip, day tour, wedding, or major sporting event, Next Bus makes travel easy, comfortable, and stress-free. Sit back, relax, and let us handle the journey.</p>
         <Button size="lg" className="px-5 py-3 fw-bold shadow-lg" onClick={openEnquiry}>
           Enquire Now
         </Button>

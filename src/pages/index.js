@@ -40,10 +40,9 @@ export default function NextBusLanding() {
             animationDelay: "0.2s",
           }}
         >
-          NextBus
+          Next Bus Charters
         </h1>
-        <p className="text-muted mb-4 fs-5 text-start">Whether you need group transport for a corporate event, school excursion, day tour, wedding, or major sporting event, NextBus makes it simple.</p>
-        <p className="text-muted mb-4 fs-5 text-start">Just post your trip once, and your request is instantly shared with trusted bus and coach operators across New Zealand. They’ll respond with their best quotes directly on our platform, so you can compare offers side by side and choose the one that suits you best — no more chasing quotes or endless phone calls.</p>
+        <p className="text-muted mb-4 fs-5 text-start">Looking for reliable group transport in South or East Auckland? Whether it’s a corporate event, school trip, day tour, wedding, or major sporting event, Next Bus makes travel easy, comfortable, and stress-free. Sit back, relax, and let us handle the journey — your group transport solution starts with Next Bus.</p>
         <Button size="lg" className="px-5 py-3 fw-bold shadow-lg" onClick={openEnquiry}>
           Enquire Now
         </Button>

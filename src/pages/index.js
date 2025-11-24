@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Button, Modal, Form, Row, Col } from "react-bootstrap";
-import Layout from "../components/layout"
+import Layout from "../components/layout";
 
 export default function NextBusLanding() {
   const [showEnquiry, setShowEnquiry] = useState(false);
-  const [formValues, setFormValues] = useState({ name: "", email: "", phone: "" });
-
-  useEffect(() => {
-    // Placeholder: OpenAI Agent Kit initialization will go here later.
-  }, [showEnquiry]);
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    groupSize: "",
+    pickupLocation: "",
+    dropoffLocation: "",
+    date: "",
+    time: "",
+    tripType: "",
+    notes: "",
+  });
 
   function openEnquiry() {
     setShowEnquiry(true);
@@ -22,66 +29,172 @@ export default function NextBusLanding() {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
 
-  function submitBasicEnquiry(e) {
+  function submitEnquiry(e) {
     e.preventDefault();
     console.log("Enquiry submitted", formValues);
-    alert("Thanks — your enquiry was received. The agent will guide you next.");
+    alert("Thanks — your enquiry has been received. We'll get back to you shortly.");
   }
 
   return (
     <Layout>
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white d-flex flex-column justify-content-left text-left">
-      <Container>
-        <h1
-          className="fw-bold display-4 text-indigo-800 mb-3 text-left"
-          style={{
-            opacity: 0,
-            animation: "fadeIn 1.8s ease-in forwards",
-            animationDelay: "0.2s",
-          }}
-        >
-          Next Bus Charters
-        </h1>
-        <p className="text-muted mb-4 fs-5 text-start">Looking for reliable group transport in South or East Auckland? Whether it’s a corporate event, school trip, day tour, wedding, or major sporting event, Next Bus makes travel easy, comfortable, and stress-free. Sit back, relax, and let us handle the journey.</p>
-        <Button size="lg" className="px-5 py-3 fw-bold shadow-lg" onClick={openEnquiry}>
-          Enquire Now
-        </Button>
-      </Container>
+      <div className="min-h-screen bg-gradient-to-b from-indigo-200 to-white flex flex-col justify-center text-left py-5">
+        <Container>
+          <h1
+            className="fw-bold display-2 text-indigo-900 mb-4"
+            style={{ opacity: 0, animation: "fadeIn 1.2s ease-in forwards" }}
+          >
+            Next<b>Bus</b><br />Charter Services
+          </h1>
 
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+          <p className="text-dark fs-4 mb-5" style={{ maxWidth: "700px" }}>
+            Reliable, modern and comfortable group transport across South and East Auckland. From school trips and corporate events to weddings and special occasions — Next<b>Bus</b> delivers safe, smooth and stress‑free charter travel.
+          </p>
 
-      {/* Enquiry Modal */}
-      <Modal show={showEnquiry} onHide={closeEnquiry} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Enquiry & Booking Assistant</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p className="text-muted mb-3">Enter your details to begin the booking process. The OpenAI Agent will take over here soon.</p>
-          <Form onSubmit={submitBasicEnquiry}>
-            <Row>
-              <Col md={12} className="mb-3">
-                <Form.Control name="name" placeholder="Your name" value={formValues.name} onChange={handleFormChange} required />
-              </Col>
-              <Col md={12} className="mb-3">
-                <Form.Control type="email" name="email" placeholder="Email" value={formValues.email} onChange={handleFormChange} required />
-              </Col>
-              <Col md={12} className="mb-3">
-                <Form.Control name="phone" placeholder="Phone" value={formValues.phone} onChange={handleFormChange} required />
-              </Col>
-            </Row>
-            <Button type="submit" className="w-100 py-2">Start Enquiry</Button>
-          </Form>
-          <div id="openai-agent-container" className="border rounded mt-4 p-3 text-center text-muted" style={{ minHeight: 200 }}>
-            OpenAI Agent Kit will appear here when integrated.
-          </div>
-        </Modal.Body>
-      </Modal>
-    </div>
+          <Button
+            size="lg"
+            className="px-5 py-3 fw-bold shadow-xl rounded-4 bg-indigo-700 border-0 hover:bg-indigo-800"
+            onClick={openEnquiry}
+            style={{ fontSize: "1.4rem" }}
+          >
+            Enquire Now
+          </Button>
+        </Container>
+
+        <style>{`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
+
+        {/* Enquiry Modal */}
+        <Modal show={showEnquiry} onHide={closeEnquiry} centered size="lg">
+          <Modal.Header closeButton>
+            <Modal.Title className="fw-bold fs-3">Charter Booking Enquiry</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p className="text-muted mb-4">
+              Tell us the details of your trip and we'll be in touch with the perfect transport option.
+            </p>
+
+            <Form onSubmit={submitEnquiry}>
+              <Row>
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    name="name"
+                    placeholder="Your Name"
+                    value={formValues.name}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formValues.email}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formValues.phone}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    type="number"
+                    name="groupSize"
+                    placeholder="Number of Passengers"
+                    value={formValues.groupSize}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    name="pickupLocation"
+                    placeholder="Pickup Location"
+                    value={formValues.pickupLocation}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    name="dropoffLocation"
+                    placeholder="Drop-off Location"
+                    value={formValues.dropoffLocation}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    type="date"
+                    name="date"
+                    value={formValues.date}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+
+                <Col md={6} className="mb-3">
+                  <Form.Control
+                    type="time"
+                    name="time"
+                    value={formValues.time}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </Col>
+
+                <Col md={12} className="mb-3">
+                  <Form.Select
+                    name="tripType"
+                    value={formValues.tripType}
+                    onChange={handleFormChange}
+                    required
+                  >
+                    <option value="">Trip Type</option>
+                    <option value="oneway">One-way</option>
+                    <option value="return">Return Trip</option>
+                    <option value="multi">Multi-stop / Custom</option>
+                  </Form.Select>
+                </Col>
+
+                <Col md={12} className="mb-3">
+                  <Form.Control
+                    name="notes"
+                    as="textarea"
+                    rows={4}
+                    placeholder="Additional notes (optional)"
+                    value={formValues.notes}
+                    onChange={handleFormChange}
+                  />
+                </Col>
+              </Row>
+
+              <Button
+                type="submit"
+                className="w-100 py-3 fw-bold bg-indigo-700 border-0 rounded-4 hover:bg-indigo-800"
+              >
+                Submit Enquiry
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
+      </div>
     </Layout>
   );
 }

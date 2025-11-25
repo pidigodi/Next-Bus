@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Button, Modal, Form, Row, Col } from "react-bootstrap";
 import Layout from "../components/layout";
+// import { StaticImage } from "gatsby-plugin-image"
 
 export default function NextBusLanding() {
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -57,7 +58,7 @@ export default function NextBusLanding() {
             className="fw-bold display-2 text-indigo-900 mb-4"
             style={{ opacity: 0, animation: "fadeIn 1.2s ease-in forwards" }}
           >
-            Next<b>Bus</b><br />Charter Services
+            NextBus<br />Charter <b>Services</b>
           </h1>
 
           <p className="text-dark fs-4 mb-5" style={{ maxWidth: "700px" }}>

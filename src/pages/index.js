@@ -77,7 +77,8 @@ export default function NextBusLanding() {
               Tell us the details of your trip and we'll be in touch with the perfect transport option.
             </p>
 
-            <Form onSubmit={submitEnquiry}>
+            <form name="contact" method="POST" data-netlify="true" onSubmit={submitEnquiry}>
+            <input type="hidden" name="form-name" value="contact" />
               <Row>
                 <Col md={6} className="mb-3">
                   <Form.Control
@@ -191,7 +192,7 @@ export default function NextBusLanding() {
               >
                 Submit Enquiry
               </Button>
-            </Form>
+            </form>
           </Modal.Body>
         </Modal>
       </div>

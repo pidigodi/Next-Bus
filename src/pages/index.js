@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Button, Modal, Form, Row, Col } from "react-bootstrap";
 import Layout from "../components/layout";
 // import { StaticImage } from "gatsby-plugin-image"
+import Seo from "../components/seo"
 
 export default function NextBusLanding() {
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -58,7 +59,7 @@ export default function NextBusLanding() {
             className="fw-bold display-2 text-indigo-900 mb-4"
             style={{ opacity: 0, animation: "fadeIn 1.2s ease-in forwards" }}
           >
-            NextBus<br />Charter <b>Services</b>
+            Auckland<br />Bus <b>Charters</b> 
           </h1>
 
           <p className="text-dark fs-4 mb-5" style={{ maxWidth: "700px" }}>
@@ -247,3 +248,9 @@ export default function NextBusLanding() {
     </Layout>
   );
 }
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
+ export const Head = () => <Seo title="NextBus" />

@@ -29,10 +29,24 @@ export default function NextBusLanding() {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
 
-  function submitEnquiry(e) {
+  // ⭐ Netlify-compatible submit handler
+  async function submitEnquiry(e) {
     e.preventDefault();
-    console.log("Enquiry submitted", formValues);
-    alert("Thanks — your enquiry has been received. We'll get back to you shortly.");
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        body: formData,
+      });
+
+      alert("Thanks — your enquiry has been received. We'll get back to you shortly.");
+      closeEnquiry();
+    } catch (error) {
+      alert("There was an issue submitting your form. Please try again.");
+    }
   }
 
   return (
@@ -47,7 +61,9 @@ export default function NextBusLanding() {
           </h1>
 
           <p className="text-dark fs-4 mb-5" style={{ maxWidth: "700px" }}>
-            Reliable, modern and comfortable group transport across South and East Auckland. From school trips and corporate events to weddings and special occasions — Next<b>Bus</b> delivers safe, smooth and stress‑free charter travel.
+            Reliable, modern and comfortable group transport across South and East Auckland. 
+            From school trips and corporate events to weddings and special occasions — 
+            Next<b>Bus</b> delivers safe, smooth and stress-free charter travel.
           </p>
 
           <Button
@@ -67,6 +83,20 @@ export default function NextBusLanding() {
           }
         `}</style>
 
+        {/* ⭐ Hidden Netlify "dummy" form — REQUIRED */}
+        <form name="contact" data-netlify="true" hidden>
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="text" name="phone" />
+          <input type="text" name="groupSize" />
+          <input type="text" name="pickupLocation" />
+          <input type="text" name="dropoffLocation" />
+          <input type="date" name="date" />
+          <input type="time" name="time" />
+          <input type="text" name="tripType" />
+          <textarea name="notes"></textarea>
+        </form>
+
         {/* Enquiry Modal */}
         <Modal show={showEnquiry} onHide={closeEnquiry} centered size="lg">
           <Modal.Header closeButton>
@@ -77,8 +107,16 @@ export default function NextBusLanding() {
               Tell us the details of your trip and we'll be in touch with the perfect transport option.
             </p>
 
-            <form name="contact" method="POST" data-netlify="true" onSubmit={submitEnquiry}>
-            <input type="hidden" name="form-name" value="contact" />
+            {/* ⭐ Actual Netlify form */}
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              onSubmit={submitEnquiry}
+            >
+              {/* Required hidden Netlify field */}
+              <input type="hidden" name="form-name" value="contact" />
+
               <Row>
                 <Col md={6} className="mb-3">
                   <Form.Control
@@ -89,6 +127,7 @@ export default function NextBusLanding() {
                     required
                   />
                 </Col>
+
                 <Col md={6} className="mb-3">
                   <Form.Control
                     type="email"
@@ -130,6 +169,7 @@ export default function NextBusLanding() {
                     required
                   />
                 </Col>
+
                 <Col md={6} className="mb-3">
                   <Form.Control
                     name="dropoffLocation"

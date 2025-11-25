@@ -61,7 +61,7 @@ export default function NextBusLanding() {
           </h1>
 
           <p className="text-dark fs-4 mb-5" style={{ maxWidth: "700px" }}>
-            Reliable, modern and comfortable group transport across South and East Auckland. 
+            Reliable, modern and comfortable group transport across South and East Auckland.
             From school trips and corporate events to weddings and special occasions — 
             Next<b>Bus</b> delivers safe, smooth and stress-free charter travel.
           </p>
@@ -83,7 +83,7 @@ export default function NextBusLanding() {
           }
         `}</style>
 
-        {/* ⭐ Hidden Netlify "dummy" form — REQUIRED */}
+        {/* ⭐ Hidden Netlify "dummy" form (required for detection) */}
         <form name="contact" data-netlify="true" hidden>
           <input type="text" name="name" />
           <input type="email" name="email" />
@@ -95,6 +95,9 @@ export default function NextBusLanding() {
           <input type="time" name="time" />
           <input type="text" name="tripType" />
           <textarea name="notes"></textarea>
+
+          {/* ⭐ Honeypot field (dummy) */}
+          <input type="text" name="bot-field" />
         </form>
 
         {/* Enquiry Modal */}
@@ -108,14 +111,18 @@ export default function NextBusLanding() {
             </p>
 
             {/* ⭐ Actual Netlify form */}
-            <form 
-              name="contact" 
-              method="POST" 
-              data-netlify="true" 
+            <form
+              name="contact"
+              method="POST"
+              netlify-honeypot="bot-field"
+              data-netlify="true"
               onSubmit={submitEnquiry}
             >
               {/* Required hidden Netlify field */}
               <input type="hidden" name="form-name" value="contact" />
+
+              {/* Required honeypot field */}
+              <input type="hidden" name="bot-field" />
 
               <Row>
                 <Col md={6} className="mb-3">

@@ -307,7 +307,7 @@ export default function NextBusLanding() {
               <iframe
                 className="agent-iframe"
                 title="Agent Assistant"
-                src="https://chatgpt.com/embed/wf_6905a7f5db9c8190b311b6f813cfd29404ea078b79939865"
+                src="https://chatkit.openai.com/embed/wf_6905a7f5db9c8190b311b6f813cfd29404ea078b79939865"
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                 // allow microphone/clipboard if the embed supports it:

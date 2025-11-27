@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+// src/pages/next-bus-landing.jsx  (or wherever the file lives)
+import React, { useState, useEffect } from "react";
 import { Container, Button, Modal, Form, Row, Col } from "react-bootstrap";
 import Layout from "../components/layout";
-// import { StaticImage } from "gatsby-plugin-image"
-import Seo from "../components/seo"
-// import { FaFacebook } from 'react-icons/fa';
+import Seo from "../components/seo";
 
 export default function NextBusLanding() {
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -20,6 +19,20 @@ export default function NextBusLanding() {
     notes: "",
   });
 
+  // New: control agent/chat modal + SSR-safe render
+  const [showAgent, setShowAgent] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // client-only rendering for Gatsby SSR safety
+    setMounted(true);
+  }, []);
+
+  // IMPORTANT: Replace this with the exact embed URL OpenAI gave you.
+  // It might be a full URL like "https://chatkit.openai.com/embed/<WORKFLOW_ID>"
+  // or similar. Do NOT hardcode any API keys here.
+  const AGENT_EMBED_URL = "https://YOUR_AGENT_EMBED_URL_FROM_OPENAI";
+
   function openEnquiry() {
     setShowEnquiry(true);
   }
@@ -32,7 +45,6 @@ export default function NextBusLanding() {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
 
-  // ⭐ Netlify-compatible submit handler
   async function submitEnquiry(e) {
     e.preventDefault();
 
@@ -51,6 +63,10 @@ export default function NextBusLanding() {
       alert("There was an issue submitting your form. Please try again.");
     }
   }
+
+  // When the agent modal is closed we unmount the iframe (by not rendering it)
+  // to stop active websocket / microphone states etc.
+  const renderAgentIframe = mounted && showAgent && AGENT_EMBED_URL;
 
   return (
     <Layout>
@@ -84,6 +100,28 @@ export default function NextBusLanding() {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
           }
+
+          /* Floating chat button (bottom-right) */
+          .agent-chat-button {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 1050;
+            border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+          }
+
+          /* Make iframe in modal fill area */
+          .agent-iframe {
+            width: 100%;
+            height: 70vh;
+            min-height: 480px;
+            border: 0;
+          }
+
+          @media (max-width: 576px) {
+            .agent-iframe { height: 60vh; min-height: 360px; }
+          }
         `}</style>
 
         {/* ⭐ Hidden Netlify "dummy" form (required for detection) */}
@@ -103,7 +141,7 @@ export default function NextBusLanding() {
           <input type="text" name="bot-field" />
         </form>
 
-        {/* Enquiry Modal */}
+        {/* Enquiry Modal (unchanged) */}
         <Modal show={showEnquiry} onHide={closeEnquiry} centered size="lg">
           <Modal.Header closeButton>
             <Modal.Title className="fw-bold fs-3">Charter Booking Enquiry</Modal.Title>
@@ -113,7 +151,6 @@ export default function NextBusLanding() {
               Tell us the details of your trip and we'll be in touch with the perfect transport option.
             </p>
 
-            {/* ⭐ Actual Netlify form */}
             <form
               name="contact"
               method="POST"
@@ -121,10 +158,7 @@ export default function NextBusLanding() {
               data-netlify="true"
               onSubmit={submitEnquiry}
             >
-              {/* Required hidden Netlify field */}
               <input type="hidden" name="form-name" value="contact" />
-
-              {/* Required honeypot field */}
               <input type="hidden" name="bot-field" />
 
               <Row>
@@ -245,13 +279,54 @@ export default function NextBusLanding() {
             </form>
           </Modal.Body>
         </Modal>
-      </div> 
+
+        {/* Floating chat button */}
+        <div>
+          <Button
+            className="agent-chat-button bg-dark-600 text-white p-3"
+            onClick={() => setShowAgent(true)}
+            aria-label="Open chat assistant"
+          >
+            Chat
+          </Button>
+        </div>
+
+        {/* Agent Modal (iframe). We only render iframe when mounted && showAgent */}
+        <Modal
+          show={showAgent}
+          onHide={() => setShowAgent(false)}
+          centered
+          size="xl"
+          dialogClassName="agent-modal"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Assistant</Modal.Title>
+          </Modal.Header>
+          <Modal.Body style={{ padding: 0 }}>
+            {renderAgentIframe ? (
+              <iframe
+                className="agent-iframe"
+                title="Agent Assistant"
+                src="https://chatgpt.com/embed/wf_6905a7f5db9c8190b311b6f813cfd29404ea078b79939865"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                // allow microphone/clipboard if the embed supports it:
+                allow="microphone; clipboard-read; clipboard-write; encrypted-media"
+              />
+            ) : (
+              // lightweight placeholder while iframe not mounted
+              <div style={{ padding: "3rem", textAlign: "center" }}>
+                Loading assistant…
+              </div>
+            )}
+          </Modal.Body>
+        </Modal>
+      </div>
     </Layout>
   );
 }
+
 /**
  * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
- export const Head = () => <Seo title="NextBus" />
+export const Head = () => <Seo title="NextBus" />;

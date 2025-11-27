@@ -31,7 +31,7 @@ export default function NextBusLanding() {
   // IMPORTANT: Replace this with the exact embed URL OpenAI gave you.
   // It might be a full URL like "https://chatkit.openai.com/embed/<WORKFLOW_ID>"
   // or similar. Do NOT hardcode any API keys here.
-  const AGENT_EMBED_URL = "https://YOUR_AGENT_EMBED_URL_FROM_OPENAI";
+  const AGENT_EMBED_URL = "https://nextbuschat.netlify.app/";
 
   function openEnquiry() {
     setShowEnquiry(true);
@@ -300,19 +300,18 @@ export default function NextBusLanding() {
           dialogClassName="agent-modal"
         >
           <Modal.Header closeButton>
-            <Modal.Title>Assistant</Modal.Title>
           </Modal.Header>
           <Modal.Body style={{ padding: 0 }}>
             {renderAgentIframe ? (
-              <iframe
-                className="agent-iframe"
-                title="Agent Assistant"
-                src="https://chatkit.openai.com/embed/wf_6905a7f5db9c8190b311b6f813cfd29404ea078b79939865"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                // allow microphone/clipboard if the embed supports it:
-                allow="microphone; clipboard-read; clipboard-write; encrypted-media"
-              />
+          <iframe
+          className="agent-iframe"
+          title="Agent Assistant"
+          src="https://nextbuschat.netlify.app/"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          // allow microphone/clipboard if the embed supports it:
+          allow="microphone; clipboard-read; clipboard-write; encrypted-media"
+        />
             ) : (
               // lightweight placeholder while iframe not mounted
               <div style={{ padding: "3rem", textAlign: "center" }}>

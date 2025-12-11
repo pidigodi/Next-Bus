@@ -1,9 +1,9 @@
 :root {
-  --border-radius: 4px;
-  --color-text: #333;
-  --color-primary: #7026ba;
-  --color-code-bg: #fff4db;
-  --color-code: #8a6534;
+  --border-radius: 8px;
+  --color-text: #1e293b;
+  --color-primary: #2563eb;
+  --color-code-bg: #f1f5f9;
+  --color-code: #475569;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
@@ -14,7 +14,7 @@
   --font-sx: 12px;
   --line-height-loose: 1.75;
   --line-height-normal: 1.5;
-  --line-height-dense: 1.1;
+  --line-height-dense: 1.15;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 16px;
@@ -32,6 +32,7 @@ html {
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -41,6 +42,7 @@ body {
   font-family: var(--font-sans);
   font-weight: normal;
   margin: 0;
+  padding: 0;
   word-wrap: break-word;
 }
 a {
@@ -72,14 +74,14 @@ dfn {
 }
 h1 {
   margin: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding: 0;
   line-height: var(--line-height-dense);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-align: left;
 }
 h1 > b {
-  color: var(--color-primary);
+  color: inherit;
 }
 img {
   border-style: none;

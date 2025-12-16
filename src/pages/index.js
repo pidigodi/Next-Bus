@@ -80,7 +80,7 @@ export default function NextBusLanding() {
     { icon: FaHeart, title: "Weddings", description: "Elegant group transport for your special day, ensuring guests arrive on time" },
     { icon: FaTrophy, title: "Sporting Events", description: "Team transport to matches, tournaments, and sporting venues" },
     { icon: FaCalendarAlt, title: "Day Tours", description: "Comfortable coaches for sightseeing and group day trips around Auckland" },
-    { icon: FaMapMarkedAlt, title: "Airport Transfers", description: "Group airport pickups and drop-offs with professional service" },
+    { icon: FaMapMarkedAlt, title: "Transfers", description: "Group airport pickups and drop-offs with professional service" },
   ];
 
   const features = [

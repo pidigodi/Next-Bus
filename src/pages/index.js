@@ -27,7 +27,7 @@ export default function NextBusLanding() {
     setMounted(true);
   }, []);
 
-  const AGENT_EMBED_URL = "https://nextbuschat.netlify.app/";
+  const AGENT_EMBED_URL = "https://agent-bus.netlify.app/";
 
   function openEnquiry() {
     setShowEnquiry(true);
@@ -651,7 +651,7 @@ export default function NextBusLanding() {
               <iframe
                 className="agent-iframe"
                 title="Agent Assistant"
-                src="https://nextbuschat.netlify.app/"
+                src="https://agent-bus.netlify.app/"
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                 allow="microphone; clipboard-read; clipboard-write; encrypted-media"

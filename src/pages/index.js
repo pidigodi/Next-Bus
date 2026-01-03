@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaBus, FaUsers, FaShieldAlt, FaClock, FaGraduationCap, FaBriefcase, FaHeart, FaTrophy, FaCalendarAlt, FaMapMarkedAlt } from "react-icons/fa";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
+import busImage from "../images/generated_image_january_01,_2026_-_6_22pm.jpeg";
 
 export default function NextBusLanding() {
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -105,7 +106,6 @@ export default function NextBusLanding() {
           }
 
           .hero-section {
-            background: linear-gradient(135deg, #0f2847 0%, #1a4d7a 50%, #2563eb 100%);
             color: white;
             padding: 100px 0 120px;
             position: relative;
@@ -119,8 +119,8 @@ export default function NextBusLanding() {
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.5;
+            background: linear-gradient(135deg, rgba(15, 40, 71, 0.75) 0%, rgba(26, 77, 122, 0.75) 50%, rgba(37, 99, 235, 0.65) 100%);
+            opacity: 1;
           }
 
           .hero-content {
@@ -338,7 +338,16 @@ export default function NextBusLanding() {
           <input type="text" name="bot-field" />
         </form>
 
-        <section className="hero-section">
+        <section
+          className="hero-section"
+          style={{
+            backgroundImage: `url(${busImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed'
+          }}
+        >
           <Container>
             <div className="hero-content">
               <h1 style={{ fontSize: "56px", fontWeight: "700", marginBottom: "24px", lineHeight: "1.2" }}>

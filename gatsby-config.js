@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Auckland Bus Charters`,
+    title: `NextBus`,
     description: `Reliable bus charter and group transport in South and East Auckland for corporate events, school trips, weddings, day tours, and sporting events. Enquire now!`,
     author: `@gatsbyjs`,
     siteUrl: `https://nextbus.co.nz/`,

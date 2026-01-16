@@ -677,4 +677,4 @@ export default function NextBusLanding() {
   );
 }
 
-export const Head = () => <Seo title="NextBus - Auckland Bus Charters" />;
+export const Head = () => <Seo title="Auckland Bus Charters" />;

@@ -351,10 +351,10 @@ export default function NextBusLanding() {
           <Container>
             <div className="hero-content">
               <h1 style={{ fontSize: "56px", fontWeight: "700", marginBottom: "24px", lineHeight: "1.2" }}>
-                Auckland Bus Charters
+                Reliable, modern and comfortable group transport in Auckland for small groups of up to 22 passengers
               </h1>
               <p style={{ fontSize: "24px", marginBottom: "40px", maxWidth: "700px", lineHeight: "1.6", opacity: "0.95" }}>
-                Reliable, modern and comfortable group transport across South and East Auckland. From school trips and corporate events to team travel and special occasions.
+                Enjoy safe, professional and stress-free travel with a friendly local driver and a well-maintained vehicle designed for comfort and convenience. Perfect for private group outings.
               </p>
               <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
                 <Button className="btn-primary-custom" onClick={openEnquiry}>

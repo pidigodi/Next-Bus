@@ -10,7 +10,7 @@
 module.exports = {
   siteMetadata: {
     title: `NextBus`,
-    description: `Reliable bus charter and group transport in South and East Auckland for corporate events, school trips, weddings, day tours, and sporting events. Enquire now!`,
+    description: `Reliable, modern and comfortable group transport in Auckland for small groups of up to 22 passengers.`,
     author: `@gatsbyjs`,
     siteUrl: `https://nextbus.co.nz/`,
   },

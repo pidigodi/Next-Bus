@@ -88,7 +88,7 @@ export default function NextBusLanding() {
     { icon: FaBus, title: "Modern Fleet", description: "Well-maintained, comfortable coaches with premium amenities" },
     { icon: FaShieldAlt, title: "Fully Licensed", description: "All drivers are professionally trained and fully licensed" },
     { icon: FaClock, title: "Always On Time", description: "Punctual service you can rely on for every journey" },
-    { icon: FaUsers, title: "Any Group Size", description: "From small groups to large events, we have the right vehicle" },
+    { icon: FaUsers, title: "Up to 22 Passengers", description: "For small groups, we have the right vehicle" },
   ];
 
   return (
@@ -402,7 +402,7 @@ export default function NextBusLanding() {
         <section className="section-padding">
           <Container>
             <div style={{ textAlign: "center", marginBottom: "60px" }}>
-              <h2 className="section-title">Our Charter Services</h2>
+              <h2 className="section-title">Our Services</h2>
               <p className="section-subtitle">
                 Professional transport solutions for every occasion across Auckland
               </p>
@@ -458,7 +458,7 @@ export default function NextBusLanding() {
         <section className="cta-section">
           <Container>
             <h2 style={{ fontSize: "42px", fontWeight: "700", marginBottom: "20px" }}>
-              Ready to Book Your Charter?
+              Ready to Book Your Trip?
             </h2>
             <p style={{ fontSize: "20px", marginBottom: "40px", opacity: "0.9", maxWidth: "600px", margin: "0 auto 40px" }}>
               Get a free quote today and experience the best in group transport across Auckland

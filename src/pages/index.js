@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { FaBus, FaUsers, FaShieldAlt, FaClock, FaGraduationCap, FaBriefcase, FaHeart, FaTrophy, FaCalendarAlt, FaMapMarkedAlt } from "react-icons/fa";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import busImage from "../images/generated_image_january_01,_2026_-_6_22pm.jpeg";
 
 export default function NextBusLanding() {
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -110,17 +109,7 @@ export default function NextBusLanding() {
             padding: 100px 0 120px;
             position: relative;
             overflow: hidden;
-          }
-
-          .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(15, 40, 71, 0.75) 0%, rgba(26, 77, 122, 0.75) 50%, rgba(37, 99, 235, 0.65) 100%);
-            opacity: 1;
+            background: linear-gradient(135deg, #0f2847 0%, #1a4d7a 50%, #2563eb 100%);
           }
 
           .hero-content {
@@ -338,16 +327,7 @@ export default function NextBusLanding() {
           <input type="text" name="bot-field" />
         </form>
 
-        <section
-          className="hero-section"
-          style={{
-            backgroundImage: `url(${busImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed'
-          }}
-        >
+        <section className="hero-section">
           <Container>
             <div className="hero-content">
               <h1 style={{ fontSize: "56px", fontWeight: "700", marginBottom: "24px", lineHeight: "1.2" }}>

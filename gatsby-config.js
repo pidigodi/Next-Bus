@@ -9,8 +9,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `NextBus`,
-    description: `Reliable, modern and comfortable group transport in Auckland for small groups of up to 22 passengers.`,
+    title: `Daily Hop-On Hop-Off Shuttle Across New Zealand's North Island`,
+    description: `Travel between Auckland, Hamilton, Hobbiton, Tauranga and Rotorua with flexible daily departures, comfortable transport and the freedom to explore at your own pace.`,
     author: `@gatsbyjs`,
     siteUrl: `https://nextbus.co.nz/`,
   },
